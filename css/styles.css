@@ -188,3 +188,40 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+#fondo-login{
+  background-color: rgba(138, 138, 138, 0.12);
+  border-radius: 20px;
+  width: 36%;
+
+}
+
+
+.form-login, .form-group{
+  
+text-align: center;
+margin: 15px;
+width: 85%;
+
+
+}
+
+.form-check{
+
+  left: 0;
+  width: 85%;
+  
+}
+.form-check-label{
+
+  margin-right: 100%;
+}
+
+#alert-login{
+
+  position: absolute;
+  top: 0;
+  height: 80px;
+  padding-top: 30px;
+  text-align: center;
+  border-radius: 10px;
+}

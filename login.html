@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
   
+  
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -14,23 +15,50 @@
       background-color: rgb(248, 249, 250);
     }
   </style>
+  
 </head>
 
 <body>
-  <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+ 
+  <main class="mt-5" >
+    <div>
+    <div class="container" align="center" style="margin-top: 100px;">
+      <div id="fondo-login">
+        <h4 style="padding-top: 40px;">Inicia Sesión</h4>
+          <form>
+            <div class="form-login">
+              <label for="InputEmail1">Correo Electronico</label>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Ingresar email">
+              <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu email con alguien mas.</small>
+            </div>
+            <div class="form-group">
+              <label for="InputPassword1">Contraseña</label>
+              <input type="password" class="form-control" id="InputPassword1" placeholder="Contraseña">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="checkbox-login">
+              <label class="form-check-label" for="checkbox-login">Recuerdame</label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin: 15px;" id="inicio">Iniciar Sesión</button>
+        </form>
       </div>
     </div>
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
+      
+         <a href="#">Volver arriba</a>
+        </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+  </div>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert-login">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">
+      <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+    </svg> Datos Incorrectos
+</div>
   </footer>
   <script src="js/login.js"></script>
 </body>
