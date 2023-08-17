@@ -15,10 +15,17 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("login").addEventListener("click", function() {
         //Si la key email está vacia es porque no se inició sesión previamente.
         if (localStorage.getItem("email") === null) {
-            //Aquí se debería mostrar el cartel de "Debe iniciar sesión."
+            document.getElementById("alert-nologin").classList.add('show');
+    setTimeout(() => {
+        document.getElementById("alert-nologin").classList.remove('show');
+        location.href="login.html"
+    }, 2000);
         } else {
             document.getElementById("login").setAttribute("href", "#");
-            //Aquí se debería mostrar el cartel de "Ya has iniciado sesión."
+            document.getElementById("alert-yeslogin").classList.add('show');
+    setTimeout(() => {
+        document.getElementById("alert-yeslogin").classList.remove('show');
+    }, 2500);
         };
     });
 });
