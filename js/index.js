@@ -11,4 +11,15 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    document.getElementById("login").addEventListener("click", function() {
+        //Si la key email está vacia es porque no se inició sesión previamente.
+        if (localStorage.getItem("email") === null) {
+            //Aquí se debería mostrar el cartel de "Debe iniciar sesión."
+        } else {
+            document.getElementById("login").setAttribute("href", "#");
+            //Aquí se debería mostrar el cartel de "Ya has iniciado sesión."
+        };
+    });
 });
+
