@@ -30,7 +30,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Iniciar Sesión</a>
+            <a class="nav-link" id="btn-login" href="#">Iniciar Sesión</a>
           </li>
           <li class="nav-item">
           </li>
@@ -87,10 +87,17 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+    <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-nologin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>No inicio sesión</strong>
+      </div>
+      <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-yeslogin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+        <strong>Ya Inicio Sesión</strong>
+      </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  
 </body>
 
 </html>
