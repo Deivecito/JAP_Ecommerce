@@ -36,19 +36,15 @@ document.addEventListener("DOMContentLoaded", function(){
         location.href="login.html"
     }, 2000);
 
-};
-        });
-});
-        } else {
+} else {
             document.getElementById("alert-yeslogin").classList.add('show');
     setTimeout(() => {
         document.getElementById("alert-yeslogin").classList.remove('show');
     }, 2500);
         };
-    };
+    
+ }
 });
-
-
     document.getElementById("login").addEventListener("click", function() {
         //Si la key email está vacia es porque no se inició sesión previamente.
         if (localStorage.getItem("email") === null) {
@@ -64,5 +60,5 @@ document.addEventListener("DOMContentLoaded", function(){
             }, 2500);
         };
     });
-});
+
 
