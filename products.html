@@ -32,13 +32,83 @@
           </li>
           <li class="nav-item">
           </li>
+          <div>
+            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            </a>  <ul id="logout_fondo" style="width: 0%; margin-left: 20px;" class="dropdown-menu" aria-labelledby="navbarScrollingDropdown"> <li><a class="dropdown-item" href="#" style="padding-left: 10px;" id="logout"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+              </svg> Cerrar Sesión</a></li> </ul> </li>
+        </div>
         </ul>
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
-    <div class="container mt-5" id="product-list-container"></div>
-  </main>
+  
+  
+  
+      <div class="text-center p-2">
+        <h2 style="margin-top: 30px;">Productos</h2>
+        <p class="lead">Verás aquí todas la categoría autos.</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col text-end">
+            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="sortAndShowProducts(ORDER_ASC_BY_NAME);">
+              <label class="btn btn-light" for="sortAsc"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-sort-alpha-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
+                <path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+              </svg></label>
+              <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="sortAndShowProducts(ORDER_DESC_BY_NAME);">
+              <label class="btn btn-light" for="sortDesc"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-sort-alpha-down-alt" viewBox="0 0 16 16">
+                <path d="M12.96 7H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V7z"/>
+                <path fill-rule="evenodd" d="M10.082 12.629 9.664 14H8.598l1.789-5.332h1.234L13.402 14h-1.12l-.419-1.371h-1.781zm1.57-.785L11 9.688h-.047l-.652 2.156h1.351z"/>
+                <path d="M4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+              </svg></label>
+              <input type="radio" class="btn-check" name="options" id="sortByCount" checked onclick="sortAndShowProducts(ORDER_BY_SOLD_COUNT);">
+              <label class="btn btn-light" for="sortByCount"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-sort-down" viewBox="0 0 16 16">
+                <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+              </svg></label>
+              <input type="radio" class="btn-check" name="options" id="sortAscPrice" onclick="sortAndShowProducts(ORDER_ASC_BY_COST);">
+              <label class="btn btn-light" for="sortAscPrice" style="font-size: 20px;">↑$</label>
+              <input type="radio" class="btn-check" name="options" id="sortDescPrice" onclick="sortAndShowProducts(ORDER_DESC_BY_COST);">
+              <label class="btn btn-light" for="sortDescPrice" style="font-size: 20px;">↓$</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12 offset-lg-0 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search_product" style="width: 250px;">
+              </div>
+              <div class="col-4">
+                <button class="btn btn-outline-success my-2 my-sm-0"  type="submit" id="search-button">Search</button>
+              </div>
+              <div class="col">
+                <p class="font-weight-normal text-end my-2">Precio</p>
+              </div>
+              <div class="col-1">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              </div>
+              <div class="col-1">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              </div>
+              <div class="col-1 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                  <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="pb-5 container">
+      <div class="container mt-5" id="product-list-container">
+        </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -55,6 +125,19 @@
       <div></div>
     </div>
   </div>
+  <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-nologin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+    <strong>No inicio sesión</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-yeslogin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Ya Inicio Sesión</strong>
+    </div>
+
+    <div class="alert alert-primary alert-dismissible fade" role="alert" id="alert-logout" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Sesión cerrada</strong>
+    </div>
+
+  
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
