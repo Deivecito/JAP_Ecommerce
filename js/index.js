@@ -1,7 +1,7 @@
-
-
 document.addEventListener("DOMContentLoaded", function(){
     validar_login();
+
+    
 
  document.getElementById("logout").addEventListener("click", function(){
     localStorage.clear();
@@ -29,14 +29,30 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function validar_login() {
         //Si la key email está vacia es porque no se inició sesión previamente.
-        if (localStorage.getItem("email") === null) {
+        if ((localStorage.getItem("email") === null) && (sessionStorage.getItem("email") === null)) {
             document.getElementById("alert-nologin").classList.add('show');
     setTimeout(() => {
         document.getElementById("alert-nologin").classList.remove('show');
         location.href="login.html"
     }, 2000);
+   
 
-} else {
+}if ((localStorage.getItem("email") === null) && (sessionStorage.getItem("email") !== null)){
+
+    document.getElementById('navbarScrollingDropdown').innerHTML = sessionStorage.getItem('email');
+
+        document.getElementById("alert-yeslogin").classList.add('show');
+    setTimeout(() => {
+        document.getElementById("alert-yeslogin").classList.remove('show');
+    }, 2500);
+
+
+
+
+}if ((localStorage.getItem("email") !== null) && (sessionStorage.getItem("email") === null)) {
+
+    document.getElementById('navbarScrollingDropdown').innerHTML = localStorage.getItem('email');
+
             document.getElementById("alert-yeslogin").classList.add('show');
     setTimeout(() => {
         document.getElementById("alert-yeslogin").classList.remove('show');
@@ -45,20 +61,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
  }
 });
-    document.getElementById("login").addEventListener("click", function() {
-        //Si la key email está vacia es porque no se inició sesión previamente.
-        if (localStorage.getItem("email") === null) {
-            document.getElementById("alert-nologin").classList.add('show');
-            setTimeout(() => {
-                document.getElementById("alert-nologin").classList.remove('show');
-                location.href="login.html"
-            }, 2000);
-        } else {
-            document.getElementById("alert-yeslogin").classList.add('show');
-            setTimeout(() => {
-                document.getElementById("alert-yeslogin").classList.remove('show');
-            }, 2500);
-        };
-    });
+  
 
 
