@@ -39,3 +39,10 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", ()=> {
+	//Pauta 1 - Entrega 2
+	if (localStorage.getItem("email") !== null) {
+		document.getElementById("navbarScrollingDropdown").innerHTML = localStorage.getItem("email");
+	};
+});
