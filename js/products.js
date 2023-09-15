@@ -26,6 +26,14 @@ function sortProducts(criteria, array) {
    
 
 
+
+function setProdID(id) {
+    //Pauta 1 - Entrega 3
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html";
+};
+
+
 function showProductsList() {
     let htmlContentToAppend = "";
 

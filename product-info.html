@@ -50,6 +50,7 @@
     </div>
   </nav>
   <main>
+
     <div class="container" id="container-product">
     
     </div>
@@ -70,6 +71,42 @@
       <span id="5" class="fa fa-star checked" value="5"></span>
       <div><p>Calificación: <small id="selectedRating">0</small> </p></div> <br>
       <button id="sendComment" class="btn btn-outline-primary mt-2">Enviar comentario</button> 
+
+    <div class="container">
+      <!-- Pauta 1 - Entrega 3: Se eliminó la alerta de funcionalidad en desarrollo -->
+      <div class="container mb-3" id="container">
+      </div>
+
+      <!-- Pauta 3 - Entrega 3: Mostrar la lista de comentarios -->
+      <div class="container mb-3">
+        <p class="fs-5 mb-3">Comentarios</p>
+        <ul class="list-group" id="comments">
+      
+        </ul>
+      </div>
+
+      <!-- Pauta 4 - Entrega 3: Agregar un comentario a la lista de comentarios -->
+      <div class="container mb-3">
+        <p>Comentar</p>
+        <div class="mb-3 w-50">
+          <label for="my-comment" class="form-label">Tu opinión</label>
+          <textarea class="form-control" id="my-comment" rows="3"></textarea>
+        </div>
+
+        <p>Tu puntuación</p>
+        <div class="mb-3" style="width: 180px;">
+          <select class="form-select" aria-label="Default select example" id="score">
+            <option selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        
+        <button type="button" class="btn btn-primary" id="sendComment">Enviar</button>
+      </div>
+
     </div>
   </main>
   <footer class="text-muted">
