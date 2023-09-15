@@ -87,7 +87,7 @@ function showComments() {
       });
     });
     
-    
+}
 
 
 function showProductInfo() {
@@ -187,3 +187,4 @@ document.addEventListener("DOMContentLoaded", ()=> {
     document.getElementById("sendComment").addEventListener("click", ()=> {
         addComment();
     });
+});
