@@ -187,12 +187,15 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-
-
-/* Formulario/Login */
-.checked {
+.checkedd{
   color: orange;
 }
+.checked:hover {
+  color: orange;
+}
+
+/* Formulario/Login */
+
 #fondo-login{
   background-color: rgba(214, 211, 211, 0.12);
   border-radius: 20px;
