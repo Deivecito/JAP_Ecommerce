@@ -24,9 +24,7 @@ function sortProducts(criteria, array) {
     return result;
 };
    
-function redirectToInfo() {
-    window.location.href="product-info.html";
-};
+
 
 function showProductsList() {
     let htmlContentToAppend = "";
@@ -36,7 +34,7 @@ function showProductsList() {
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) && ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
                 htmlContentToAppend += `
-                <div class="row cursor-active" onclick="redirectToInfo()">
+                <div class="row cursor-active" onclick="setProdID(${product.id})">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
                     </div>
@@ -52,6 +50,11 @@ function showProductsList() {
         
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
     };
+};
+
+function setProdID(id) {
+    localStorage.setItem('prodID', id);
+    window.location.href="product-info.html";
 };
 
 function sortAndShowProducts(sortCriteria, categoriesArray){
