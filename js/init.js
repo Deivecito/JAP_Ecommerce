@@ -40,9 +40,28 @@ let getJSONData = function(url){
     });
 }
 
+function cambiarFondo() {
+    // Pauta 3 -Entrega 4
+    if (localStorage.getItem("theme") === null || localStorage.getItem("theme") === "light") {
+        document.getElementsByTagName("body")[0].classList.add("dark-mode");
+        localStorage.setItem("theme", "dark"); 
+    } else {
+        document.getElementsByTagName("body")[0].classList.remove("dark-mode");
+        localStorage.setItem("theme", "light");
+    };
+};
+
 document.addEventListener("DOMContentLoaded", ()=> {
 	//Pauta 1 - Entrega 2
-	if (localStorage.getItem("email") !== null) {
-		document.getElementById("navbarScrollingDropdown").innerHTML = localStorage.getItem("email");
-	};
+    if (localStorage.getItem("email") !== null) {
+      document.getElementById("navbarScrollingDropdown").innerHTML = localStorage.getItem("email");
+    };
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.getElementsByTagName("body")[0].classList.add("dark-mode");
+    };
+
+    document.getElementById("cambioFondo").addEventListener("click", ()=> {
+        cambiarFondo();
+    });
 });
