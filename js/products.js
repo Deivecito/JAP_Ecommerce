@@ -23,16 +23,12 @@ function sortProducts(criteria, array) {
     }
     return result;
 };
-   
-
-
 
 function setProdID(id) {
     //Pauta 1 - Entrega 3
     localStorage.setItem("prodID", id);
     window.location = "product-info.html";
 };
-
 
 function showProductsList() {
     let htmlContentToAppend = "";
@@ -60,11 +56,6 @@ function showProductsList() {
     };
 };
 
-function setProdID(id) {
-    localStorage.setItem('prodID', id);
-    window.location.href="product-info.html";
-};
-
 function sortAndShowProducts(sortCriteria, categoriesArray){
     if (categoriesArray != undefined) {
         productsArray = categoriesArray;
@@ -73,8 +64,7 @@ function sortAndShowProducts(sortCriteria, categoriesArray){
     productsArray = sortProducts(sortCriteria, productsArray);
     
     showProductsList();
-};
-   
+};  
            
 document.addEventListener('DOMContentLoaded', function() {
     validar_login();

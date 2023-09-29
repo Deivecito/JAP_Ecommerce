@@ -11,8 +11,6 @@
 
 nav a {
   text-decoration: none;
-  margin-left: 100px;
-
 }
 
 .bd-placeholder-img {
@@ -274,5 +272,9 @@ width: 85%;
   background-color: rgb(253, 83, 83);
 }
 
-
+/* Pauta 3 Entrega 4 */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
 
