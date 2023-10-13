@@ -77,6 +77,11 @@ function showProductInfo() {
     .then(data => {
         document.getElementById("container").innerHTML = `
 
+        <div class="d-flex justify-content-between">
+                <p class="fs-2 mt-4 mb-4">${data.name}</p>
+                <button type="button" class="btn btn-success m-4" onclick="addToCart(${data.id})">Comprar</button>
+            </div>
+
             <hr>
             <div class="row">
                 <p class="mb-0"><strong>Precio</strong></p>
