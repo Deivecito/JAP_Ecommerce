@@ -1,3 +1,5 @@
+let cart = [];
+
 function showComments() {
     //Pauta 3 - Entrega 3
     fetch(`https://japceibal.github.io/emercado-api/products_comments/${localStorage.getItem("prodID")}.json`)
@@ -74,18 +76,7 @@ function showProductInfo() {
     .then(response => response.json())
     .then(data => {
         document.getElementById("container").innerHTML = `
-        <style>
-         #carouselExampleIndicators {
-        max-width: 800px;
-        margin: 0 auto;
-         }
-        #carouselExampleIndicators img {
-        max-width: 100%;
-        height: auto;
-        }
-        </style>
 
-            <p class="fs-2 mt-4 mb-4">${data.name}</p>
             <hr>
             <div class="row">
                 <p class="mb-0"><strong>Precio</strong></p>
@@ -191,6 +182,23 @@ function setProdID(id) {
     //Pauta 1 - Entrega 3
     localStorage.setItem("prodID", id);
     window.location = "product-info.html";
+};
+
+//Entrega 5 - Desafiate
+function addToCart(id) {
+    //Recuerda los elementos guardados en el almacenamiento, y actualiza la lista cart. 
+    //Cada vez que se carga una pagina-info, la lista cart es vacia.
+    if (localStorage.getItem("cart") !== null) {cart = JSON.parse(localStorage.getItem("cart"))};
+
+    //Si el producto está incluido en el carrito, no se añade el producto. 
+    //En caso contrario, lo añade y actualiza la lista cart en el almacenamiento.
+    if (cart.includes(id)) {
+        alert("El producto ya está añadido al carrito de compras")
+    } else {
+        cart.push(JSON.parse(id))
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Añadiste el producto al carrito de compras");
+    }
 };
 
 document.addEventListener("DOMContentLoaded", ()=> {
