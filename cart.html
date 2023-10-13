@@ -56,10 +56,57 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container-fluid mb-3 mt-5 w-50">
+
+      <!-- Entrega 5 - Pauta 1 -->
+      <h2 class="text-center mb-5">Carrito de compras</h1>
+      <h4 class="mb-4">Artículos a comprar</h4>
+      <div class="table-responsive-sm">
+        <table class="table mb-5">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
       </div>
+
+      <!-- Entrega 5 - Pauta 2 -->
+      <hr >
+      <div class="mb-2">
+        <h4>Tipo de envío</h4>
+        <input type="radio" name="shipment" id="premiumShip" checked><label for="premiumShip">Premium 2 a 5 días (15%)</label><br>
+        <input type="radio" name="shipment" id="expressShip"><label for="expressShip">Express 5 a 8 días (7%)</label><br>
+        <input type="radio" name="shipment" id="standardShip"><label for="standardShip">Standard 12 a 15 días (5%)</label><br>
+      </div>
+      <div class="mt-3 mb-3">
+        <h4>Dirección de envío</h4>
+        <div class="row d-flex justify-content-between">
+          <div class="col">
+              <label for="street" class="form-label">Calle</label>
+              <div class="input-group mb-2">
+                <input type="text" id="street" class="form-control">
+              </div>
+          </div>
+          <div class="col">
+              <label for="streetCorner" class="form-label">Esquina</label>
+              <div class="input-group mb-2">
+                <input type="text" id="streetCorner" class="form-control">
+              </div>
+          </div>
+        </div>
+        <label for="number" class="form-label">Número</label>
+        <div class="input-group mb-2">
+          <input type="text" id="number" class="form-control">
+        </div>
+      </div>
+      <hr>
     </div>
   </main>
   <footer class="text-muted">
