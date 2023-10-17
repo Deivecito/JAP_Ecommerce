@@ -12,7 +12,7 @@ function getCart() {
                     <td>${data.articles[i].name}</td>
                     <td>${data.articles[i].currency} ${data.articles[i].unitCost}</td>
                     <td align="center">
-                        <div class="input-group" style="width: 40%;">
+                        <div class="input-group input-responsive"  >
                         <button class='btn-operador' onclick="restar(${data.articles[i].id}, ${data.articles[i].unitCost})">-</button> <input type="number" min="1" class="form-control" value="${data.articles[i].count}" id="${data.articles[i].id}" oninput="cost(${data.articles[i].id}, ${data.articles[i].unitCost})"> <button  onclick="sumar(${data.articles[i].id}, ${data.articles[i].unitCost})" class="btn-operador">+</button>
                         </div>
                     </td>
@@ -40,7 +40,7 @@ function getCart() {
                     <td>${data.name}</td>
                     <td>${data.currency} ${data.cost}</td>
                     <td align="center">
-                        <div class="input-group" style="width: 40%;">
+                        <div class="input-group input-responsive" >
                         <button class='btn-operador' onclick="restar(${data.id}, ${data.cost})">-</button><input type="number" min="1" class="form-control" value="1" id="${data.id}" oninput="cost(${data.id}, ${data.cost})"> <button  onclick="sumar(${data.id}, ${data.cost})" class="btn-operador">+</button>
                         </div>
                     </td>
