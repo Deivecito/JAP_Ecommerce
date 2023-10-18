@@ -23,6 +23,18 @@ nav a {
 }
 
 @media (min-width: 768px) {
+  .input-responsive {
+    width: 100px;
+  }
+}
+@media (min-width: 360px) {
+  .btn-operador {
+    font-size: 10px;
+  }
+}
+
+
+@media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
@@ -34,7 +46,7 @@ nav a {
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
-  background-size: cover;
+  background-size: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   color: black;

@@ -27,8 +27,8 @@ function showComments() {
                 };
                 document.getElementById("comentarios").innerHTML += `
                     <li class="list-group-item">
-                        <div class="row">
-                            <p class="mb-0"><strong>${data[i].user}</strong> - ${data[i].dateTime} - ${stars}</p> 
+                        <div style="display: flex;">
+                            <p class="mb-0"><strong>${data[i].user}</strong>-</p><p class="mb-0 d-none d-lg-block">${data[i].dateTime}-</p><p class="mb-0">${stars}</p> 
                         </div>
                         <div class="row">
                             <p class="mb-0">${data[i].description}</p>
