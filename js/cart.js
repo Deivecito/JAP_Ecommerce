@@ -1,3 +1,5 @@
+let contadorAntiguo = {};
+
 function getCart() {
     let htmlContent = "";
 
@@ -13,7 +15,7 @@ function getCart() {
                     <td>${data.articles[i].currency} ${data.articles[i].unitCost}</td>
                     <td align="center">
                         <div class="input-group input-responsive"  >
-                        <button class='btn-operador' onclick="restar(${data.articles[i].id}, ${data.articles[i].unitCost})">-</button> <input type="number" min="1" class="form-control" value="${data.articles[i].count}" id="${data.articles[i].id}" oninput="cost(${data.articles[i].id}, ${data.articles[i].unitCost})"> <button  onclick="sumar(${data.articles[i].id}, ${data.articles[i].unitCost})" class="btn-operador">+</button>
+                        <button class='btn-operador' onclick="restar(${data.articles[i].id}, ${data.articles[i].unitCost}, '${data.articles[i].currency}')">-</button> <input type="number" min="1" class="form-control" value="${data.articles[i].count}" id="${data.articles[i].id}" oninput="cost(${data.articles[i].id}, ${data.articles[i].unitCost}, '${data.articles[i].currency}')"> <button  onclick="sumar(${data.articles[i].id}, ${data.articles[i].unitCost}, '${data.articles[i].currency}')" class="btn-operador">+</button>
                         </div>
                     </td>
                     <td><strong>${data.articles[i].currency} </strong><strong id="${data.articles[i].id}_total">${data.articles[i].unitCost}</strong></td>
@@ -22,6 +24,8 @@ function getCart() {
                   </svg></p></td>
                 </tr>
             `;
+            productCost(data.articles[i].unitCost, data.articles[i].currency);
+            
         };
         document.getElementById("tbody").innerHTML = htmlContent;
     })
@@ -41,7 +45,7 @@ function getCart() {
                     <td>${data.currency} ${data.cost}</td>
                     <td align="center">
                         <div class="input-group input-responsive" >
-                        <button class='btn-operador' onclick="restar(${data.id}, ${data.cost})">-</button><input type="number" min="1" class="form-control" value="1" id="${data.id}" oninput="cost(${data.id}, ${data.cost})"> <button  onclick="sumar(${data.id}, ${data.cost})" class="btn-operador">+</button>
+                        <button class='btn-operador' onclick="restar(${data.id}, ${data.cost}, '${data.currency}')">-</button><input type="number" min="1" class="form-control" value="1" id="${data.id}" oninput="cost(${data.id}, ${data.cost}, '${data.currency}')"> <button  onclick="sumar(${data.id}, ${data.cost}, '${data.currency}')" class="btn-operador">+</button>
                         </div>
                     </td>
                     <td><strong>${data.currency} </strong><strong id="${data.id}_total">${data.cost}</strong></td>
@@ -49,25 +53,196 @@ function getCart() {
                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                   </svg></p></td>
                 </tr>
-            `;
+                    `;
+                
+                productCost(data.cost, data.currency);
+                totalCost();
+                
+                
+           
             document.getElementById("tbody").innerHTML = htmlContent;
         })
         .catch(error => console.log("Error: ", error));
     };
 };
 
-function cost(id, price) {
-    //Entrega 5 - Pauta 3
-    document.addEventListener("input", ()=>{
-        let count = document.getElementById(id).value;
-        if (count > 0){
-        document.getElementById(`${id}_total`).innerHTML = price * count; 
+function validateForm(){
+    const a = document.getElementById('ccv').value;
+    const b = document.getElementById('credit').value;
+    const c = document.getElementById('expired').value;
+    const d = document.getElementById('acc').value;
+    const cr = document.getElementById('creditCard');
+    const cd = document.getElementById('bankTransfer');
+    const seleccionarClass = document.getElementById('seleccionar');
+
+
+
+  if (cr.checked) {
+    if (a !== "" && b !== "" && c !== "") {
+        seleccionarClass.classList.remove('is-invalid');
+        return true;
+    } else {
+        seleccionarClass.classList.add('is-invalid');
+        return false;
     }
+} else if (cd.checked) {
+    if (d !== "") {
+        seleccionarClass.classList.remove('is-invalid');
+        return true;
+    } else {
+        seleccionarClass.classList.add('is-invalid');
+        return false;
+    }
+} else { seleccionarClass.classList.add('is-invalid');
+return false;
+}
+
+}
+
+(function () {
+    'use strict';
+
+    
+
+    let forms = document.querySelectorAll('.needs-validation');
+
+    Array.prototype.slice.call(forms)
+    
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity() || !validateForm()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                else if (form.checkValidity() && validateForm()){
+                    event.preventDefault();
+                    event.stopPropagation();
+                    document.getElementById("alert-successBuy").classList.add('show');
+            setTimeout(() => {
+                 window.location.href = 'cart.html';
+            }, 4000);
+                }
+               validateForm();
+                
+                form.classList.add('was-validated');
+            }, false);
+        });
+})();
+
+
+
+
+// desactivar metodo de pago
+document.getElementById('creditCard').addEventListener('change', () => {
+    disable({
+        deshabilitar: [document.getElementById('ccv'), document.getElementById('expired'), document.getElementById('credit')],
+        habilitar: [document.getElementById('acc')]
     });
-};
+});
+
+document.getElementById('bankTransfer').addEventListener('change', () => {
+    disable({
+        deshabilitar: [document.getElementById('acc')],
+        habilitar: [document.getElementById('ccv'), document.getElementById('credit'), document.getElementById('expired')]
+    });
+});
+
+function disable(params) {
+    params.deshabilitar.forEach(elemento => {
+        elemento.disabled = false;
+    });
+
+    params.habilitar.forEach(elemento => {
+        elemento.disabled = true;
+    });
+}
+
+
+    
+    
+    
+    
+function productCost(price, currency) {
+    let ignoreString = document.getElementById('productCostText').innerHTML;
+    let totalCost = parseFloat(ignoreString.replace('USD', '').trim());
+  
+    if (currency === "USD") {
+      totalCost += price;
+    } else {
+      totalCost += (price * 0.025);
+    }
+
+    
+    document.getElementById('productCostText').innerHTML = 'USD ' + totalCost.toFixed(2);
+    
+  }
+  
+    function totalCost() {
+    let ignoreString = document.getElementById('productCostText').innerHTML;
+   let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+   let ignoreCommisionSting = document.getElementById('comissionText').innerHTML;
+   let totalCommision = parseFloat(ignoreCommisionSting.replace('USD', '').trim());
+   let totalCost = totalPrice + totalCommision;
+   document.getElementById('totalCostText').innerHTML = "USD " + (Math.round(totalCost) - 0.01);
+  }
+
+
+
+
+function cost(id, price, currency) {
+  
+    let contadorPrevio = contadorAntiguo[id] || 1;
+
+    let count = document.getElementById(id).value;
+  
+    let diferencia = count - contadorPrevio;
+    
+    if (count > 0) {
+        contadorAntiguo[id] = count;
+        document.getElementById(`${id}_total`).innerHTML = price * count;
+        productCost((price * diferencia) , currency)
+    }
+    totalCost()
+    
+}
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", ()=>{
     getCart();
+   
+   
+
+    document.getElementById('premiumShip').addEventListener('change', ()=>{
+        let ignoreString = document.getElementById('productCostText').innerHTML;
+        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*15) / 100);
+        totalCost();
+    })
+    document.getElementById('expressShip').addEventListener('change', ()=>{
+        let ignoreString = document.getElementById('productCostText').innerHTML;
+        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*7) / 100);
+        totalCost();
+    })
+    document.getElementById('standardShip').addEventListener('change', ()=>{
+        let ignoreString = document.getElementById('productCostText').innerHTML;
+        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*5) / 100);
+        totalCost();
+    })
+
+    
+    document.getElementById('creditCard').addEventListener('change', ()=>{
+        document.getElementById('divpay').innerHTML = 'Tarjeta de credito';
+    })
+    document.getElementById('bankTransfer').addEventListener('change', ()=>{
+        document.getElementById('divpay').innerHTML = 'Transferencia bancaria';
+    })
+   
+    
 });
 
 function deleteCartID(i) {
@@ -81,7 +256,9 @@ function deleteCartID(i) {
 
 
 
-function sumar(id, price){
+
+
+function sumar(id, price, currency){
     let contador = parseInt(document.getElementById(`${id}`).value);
    contador +=1;
    if (contador < 1) {
@@ -89,21 +266,29 @@ function sumar(id, price){
    }
    document.getElementById(`${id}`).value = contador;
    calcSubtotal(id, price);
+   productCost(price, currency);
+   totalCost();
+   contadorAntiguo[id] = contador;
    
 }
 
-function restar(id, price){
+function restar(id, price, currency){
    let contador = parseInt(document.getElementById(`${id}`).value);
    contador -=1;
    if (contador >= 1){
    document.getElementById(`${id}`).value = contador;
-   calcSubtotal(id, price)
+   calcSubtotal(id, price);
+   productCost(-price, currency);
+   totalCost();
+   contadorAntiguo[id] = contador;
 }}
+
 
 function calcSubtotal(id, price){
    let contador = parseInt(document.getElementById(`${id}`).value);
    if (contador > 0){
    let subtotal = contador * price;
    document.getElementById(`${id}_total`).innerHTML = subtotal;
+   
   }             
 }

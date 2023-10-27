@@ -56,6 +56,7 @@
     </div>
   </nav>
   <main>
+
     <div class="container-fluid mb-3 mt-5">
 
       <!-- Entrega 5 - Pauta 1 -->
@@ -77,38 +78,130 @@
           </tbody>
         </table>
       </div>
-
+    </div>
       <!-- Entrega 5 - Pauta 2 -->
       <hr >
-      <div class="mb-2">
+      <div class="container mb-2">
         <h4>Tipo de envío</h4>
         <input type="radio" name="shipment" id="premiumShip" checked><label for="premiumShip">Premium 2 a 5 días (15%)</label><br>
         <input type="radio" name="shipment" id="expressShip"><label for="expressShip">Express 5 a 8 días (7%)</label><br>
         <input type="radio" name="shipment" id="standardShip"><label for="standardShip">Standard 12 a 15 días (5%)</label><br>
       </div>
-      <div class="mt-3 mb-3">
-        <h4>Dirección de envío</h4>
-        <div class="row d-flex justify-content-between">
-          <div class="col">
-              <label for="street" class="form-label">Calle</label>
-              <div class="input-group mb-2">
-                <input type="text" id="street" class="form-control">
+<form action="" class="needs-validation" id="direccion" novalidate>
+      <div class="container mt-3 mb-3">
+          <h4>Dirección de envío</h4>
+          <div class="row">
+              <div class="col-md-6">
+                  <label for="street" class="form-label">Calle</label>
+                  <input type="text" id="street" class="form-control" required>
+                  <div class="invalid-feedback">
+                      Ingrese una calle
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <label for="Number" class="form-label">Número</label>
+                  <input type="number" id="Number" class="form-control" required>
+                  <div class="invalid-feedback">
+                      Ingrese un número
+                  </div>
               </div>
           </div>
-          <div class="col">
+          <div class="mt-3">
               <label for="streetCorner" class="form-label">Esquina</label>
-              <div class="input-group mb-2">
-                <input type="text" id="streetCorner" class="form-control">
+              <input type="text" id="streetCorner" class="form-control" required>
+              <div class="invalid-feedback">
+                  Ingrese una esquina
               </div>
           </div>
-        </div>
-        <label for="number" class="form-label">Número</label>
-        <div class="input-group mb-2">
-          <input type="text" id="number" class="form-control">
-        </div>
       </div>
-      <hr>
+      
+    
+
+   <div class="container">
+          <h4 class="mb-3 mt-5">Costos</h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Precio</h6>
+                <small class="text-muted">Unitario del producto</small>
+              </div>
+              <span class="text-muted" id="productCostText">0</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Porcentaje</h6>
+                <small class="text-muted">Según el tipo de publicación</small>
+              </div>
+              <span class="text-muted" id="comissionText">0</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total ($)</span>
+              <strong id="totalCostText">0</strong>
+            </li>
+          </ul>
+          <hr class="mb-4">
+  </div>
+<div class="container">
+   <h4 class="mb-3 mt-5">Forma de pago</h4>
+  <div class="col-sm-12"><small id="divpay">no se ha seleccionado</small>
+    
+    <button type="button" class="btn btn-link ps-0 ms-2" data-bs-toggle="modal"
+      data-bs-target="#modalTerminos" id="seleccionar">Seleccionar </button>
+      <div class="invalid-feedback">
+        Debe ingresar metodo de pago
+      </div>
+  </div>
+</div>
+<div class="container" align="center">
+<button class="btn btn-primary w-75 mt-5">Finalizar compra</button>
+</div> 
+</form>
+<form action="" class="needs-validation" id="payMethod" novalidate>
+
+<div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Forma de pago</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        
+          <div class="form-group"> <input type="radio" name="payMethod" id="creditCard" value="C" required> <label for="creditCard">Tarjeta de crédito</label>
+        <hr>
+      </div>
+        <div class="row d-flex">
+          <div class="form-group col">
+            <label for="credit">Numero de tarjeta</label>
+            <input type="number" class="form-control" id="credit" disabled required>
+          </div>
+          <div class="col">
+            <label for="ccv">Codigo seguridad</label>
+            <input type="number" class="form-control" id="ccv" disabled required>
+          </div>
+          <div class="form-group mt-3">
+            <label for="expired">Vencimiento (MM/AA)</label>
+            <input type="text" class="form-control" id="expired" disabled required>
+          </div></div>
+          <div class="form-group"> <input type="radio" class="mt-5" id="bankTransfer" name="payMethod" value="B" required> <label for="bankTransfer">Transferencia bancaria</label>
+            <hr> </div>
+            <div class="form-group">
+              <label for="acc">Numero de cuenta</label>
+              <input type="number" class="form-control" id="acc" disabled required>
+            </div>
+          
+          </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+      </div>
     </div>
+
+</form>
+  
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -126,9 +219,13 @@
       <div></div>
     </div>
   </div>
+  <div class="alert alert-success alert-dismisible fade" role="alert" id="alert-successBuy"  align="center" style="margin-top: 35px;">
+    <strong>Has comprado con éxito!</strong>
+    </div>
+    
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+  <script src="js/cart.js" defer></script>
 </body>
 
 </html>
