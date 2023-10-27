@@ -107,12 +107,16 @@ footer p {
   max-height: 100%;
 }
 
+
+
+
 .alert {
   position: fixed;
   top: 80px;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
+  
 }
 
 .lds-ring {
