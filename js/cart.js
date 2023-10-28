@@ -25,6 +25,8 @@ function getCart() {
                 </tr>
             `;
             productCost(data.articles[i].unitCost, data.articles[i].currency);
+            commision(15);
+            totalCost();
             
         };
         document.getElementById("tbody").innerHTML = htmlContent;
@@ -207,7 +209,11 @@ function cost(id, price, currency) {
 }
 
 
-
+function commision(porcent){
+    let ignoreString = document.getElementById('productCostText').innerHTML;
+    let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+    document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*porcent) / 100);
+}
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -216,21 +222,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
    
 
     document.getElementById('premiumShip').addEventListener('change', ()=>{
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*15) / 100);
+        commision(15)
         totalCost();
     })
     document.getElementById('expressShip').addEventListener('change', ()=>{
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*7) / 100);
+        commision(7)
         totalCost();
     })
     document.getElementById('standardShip').addEventListener('change', ()=>{
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*5) / 100);
+        commision(5)
         totalCost();
     })
 
