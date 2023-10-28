@@ -24,12 +24,16 @@ function getCart() {
                   </svg></p></td>
                 </tr>
             `;
-                productCost(data.articles[i].unitCost, data.articles[i].currency);
 
-            };
-            document.getElementById("tbody").innerHTML = htmlContent;
-        })
-        .catch(error => console.log("Error: ", error));
+            productCost(data.articles[i].unitCost, data.articles[i].currency);
+            commision(15);
+            totalCost();
+            
+        };
+        document.getElementById("tbody").innerHTML = htmlContent;
+    })
+    .catch(error => console.log("Error: ", error));
+
 
     let cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -191,27 +195,29 @@ function cost(id, price, currency) {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+
+function commision(porcent){
+    let ignoreString = document.getElementById('productCostText').innerHTML;
+    let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+    document.getElementById("comissionText").innerHTML = "USD " + Math.trunc( (totalPrice*porcent) / 100);
+}
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
     getCart();
+   
+   
 
-
-
-    document.getElementById('premiumShip').addEventListener('change', () => {
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc((totalPrice * 15) / 100);
+    document.getElementById('premiumShip').addEventListener('change', ()=>{
+        commision(15);
         totalCost();
     })
-    document.getElementById('expressShip').addEventListener('change', () => {
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc((totalPrice * 7) / 100);
+    document.getElementById('expressShip').addEventListener('change', ()=>{
+        commision(7);
         totalCost();
     })
-    document.getElementById('standardShip').addEventListener('change', () => {
-        let ignoreString = document.getElementById('productCostText').innerHTML;
-        let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-        document.getElementById("comissionText").innerHTML = "USD " + Math.trunc((totalPrice * 5) / 100);
+    document.getElementById('standardShip').addEventListener('change', ()=>{
+        commision(5);
         totalCost();
     })
 
