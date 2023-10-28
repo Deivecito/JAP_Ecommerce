@@ -58,6 +58,7 @@ function getCart() {
                     `;
                 
                 productCost(data.cost, data.currency);
+                commision(15);
                 totalCost();
                 
                 
