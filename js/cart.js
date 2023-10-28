@@ -168,16 +168,31 @@ function productCost(price, currency) {
     }
 
     document.getElementById('productCostText').innerHTML = 'USD ' + totalCost.toFixed(2);
-}
 
-function totalCost() {
+    
+  }
+  
+    function totalCost() {
+        if (document.getElementById('premiumShip').checked){
+             commision(15);
+        }
+        else if (document.getElementById('expressShip').checked){
+            commision(7);
+        }
+        else {
+            commision(5);
+        }
+       
     let ignoreString = document.getElementById('productCostText').innerHTML;
-    let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
-    let ignoreCommisionSting = document.getElementById('comissionText').innerHTML;
-    let totalCommision = parseFloat(ignoreCommisionSting.replace('USD', '').trim());
-    let totalCost = totalPrice + totalCommision;
-    document.getElementById('totalCostText').innerHTML = "USD " + (Math.round(totalCost) - 0.01);
-}
+   let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
+   let ignoreCommisionSting = document.getElementById('comissionText').innerHTML;
+   let totalCommision = parseFloat(ignoreCommisionSting.replace('USD', '').trim());
+   let totalCost = totalPrice + totalCommision;
+   document.getElementById('totalCostText').innerHTML = "USD " + (Math.round(totalCost) - 0.01);
+  }
+
+
+
 
 function cost(id, price, currency) {
 
