@@ -181,6 +181,16 @@ function productCost(price, currency) {
   }
   
     function totalCost() {
+        if (document.getElementById('premiumShip').checked){
+             commision(15);
+        }
+        else if (document.getElementById('expressShip').checked){
+            commision(7);
+        }
+        else {
+            commision(5);
+        }
+       
     let ignoreString = document.getElementById('productCostText').innerHTML;
    let totalPrice = parseFloat(ignoreString.replace('USD', '').trim());
    let ignoreCommisionSting = document.getElementById('comissionText').innerHTML;
