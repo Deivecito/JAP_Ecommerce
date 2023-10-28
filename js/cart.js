@@ -5,10 +5,10 @@ function getCart() {
 
     //Entrega 5 - Pauta 1
     fetch("https://japceibal.github.io/emercado-api/user_cart/25801.json")
-    .then(response => response.json())
-    .then(data => {
-        for (let i = 0; i < data.articles.length; i++) {
-            htmlContent += `
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.articles.length; i++) {
+                htmlContent += `
                 <tr>
                     <td><img src="${data.articles[i].image}" alt="imgProd" style="height: 50px"></td>
                     <td>${data.articles[i].name}</td>
@@ -24,6 +24,7 @@ function getCart() {
                   </svg></p></td>
                 </tr>
             `;
+
             productCost(data.articles[i].unitCost, data.articles[i].currency);
             commision(15);
             totalCost();
@@ -33,14 +34,15 @@ function getCart() {
     })
     .catch(error => console.log("Error: ", error));
 
+
     let cart = JSON.parse(localStorage.getItem("cart"));
 
     //Entrega 5 - Desafiate
     for (let i = 0; i < cart.length; i++) {
         fetch(`https://japceibal.github.io/emercado-api/products/${cart[i]}.json`)
-        .then(response => response.json())
-        .then(data => {
-            htmlContent += `
+            .then(response => response.json())
+            .then(data => {
+                htmlContent += `
                 <tr>
                     <td><img src="${data.images[0]}" alt="imgProd" style="height: 50px"></td>
                     <td>${data.name}</td>
@@ -56,20 +58,20 @@ function getCart() {
                   </svg></p></td>
                 </tr>
                     `;
-                
+
                 productCost(data.cost, data.currency);
                 commision(15);
                 totalCost();
-                
-                
-           
-            document.getElementById("tbody").innerHTML = htmlContent;
-        })
-        .catch(error => console.log("Error: ", error));
+
+
+
+                document.getElementById("tbody").innerHTML = htmlContent;
+            })
+            .catch(error => console.log("Error: ", error));
     };
 };
 
-function validateForm(){
+function validateForm() {
     const a = document.getElementById('ccv').value;
     const b = document.getElementById('credit').value;
     const c = document.getElementById('expired').value;
@@ -78,62 +80,57 @@ function validateForm(){
     const cd = document.getElementById('bankTransfer');
     const seleccionarClass = document.getElementById('seleccionar');
 
-
-
-  if (cr.checked) {
-    if (a !== "" && b !== "" && c !== "") {
-        seleccionarClass.classList.remove('is-invalid');
-        return true;
+    if (cr.checked) {
+        if (a !== "" && b !== "" && c !== "") {
+            seleccionarClass.classList.remove('is-invalid');
+            return true;
+        } else {
+            seleccionarClass.classList.add('is-invalid');
+            return false;
+        }
+    } else if (cd.checked) {
+        if (d !== "") {
+            seleccionarClass.classList.remove('is-invalid');
+            return true;
+        } else {
+            seleccionarClass.classList.add('is-invalid');
+            return false;
+        }
     } else {
         seleccionarClass.classList.add('is-invalid');
         return false;
     }
-} else if (cd.checked) {
-    if (d !== "") {
-        seleccionarClass.classList.remove('is-invalid');
-        return true;
-    } else {
-        seleccionarClass.classList.add('is-invalid');
-        return false;
-    }
-} else { seleccionarClass.classList.add('is-invalid');
-return false;
-}
 
 }
 
 (function () {
     'use strict';
 
-    
-
     let forms = document.querySelectorAll('.needs-validation');
 
     Array.prototype.slice.call(forms)
-    
+
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity() || !validateForm()) {
                     event.preventDefault();
                     event.stopPropagation();
                 }
-                else if (form.checkValidity() && validateForm()){
+                else if (form.checkValidity() && validateForm()) {
                     event.preventDefault();
                     event.stopPropagation();
                     document.getElementById("alert-successBuy").classList.add('show');
-            setTimeout(() => {
-                 window.location.href = 'cart.html';
-            }, 4000);
+                    localStorage.removeItem("cart");
+                    setTimeout(() => {
+                        window.location.href = 'cart.html';
+                    }, 4000);
                 }
-               validateForm();
-                
+                validateForm();
+
                 form.classList.add('was-validated');
             }, false);
         });
 })();
-
-
-
 
 // desactivar metodo de pago
 document.getElementById('creditCard').addEventListener('change', () => {
@@ -160,23 +157,18 @@ function disable(params) {
     });
 }
 
-
-    
-    
-    
-    
 function productCost(price, currency) {
     let ignoreString = document.getElementById('productCostText').innerHTML;
     let totalCost = parseFloat(ignoreString.replace('USD', '').trim());
-  
+
     if (currency === "USD") {
-      totalCost += price;
+        totalCost += price;
     } else {
-      totalCost += (price * 0.025);
+        totalCost += (price * 0.025);
     }
 
-    
     document.getElementById('productCostText').innerHTML = 'USD ' + totalCost.toFixed(2);
+
     
   }
   
@@ -203,20 +195,20 @@ function productCost(price, currency) {
 
 
 function cost(id, price, currency) {
-  
+
     let contadorPrevio = contadorAntiguo[id] || 1;
 
     let count = document.getElementById(id).value;
-  
+
     let diferencia = count - contadorPrevio;
-    
+
     if (count > 0) {
         contadorAntiguo[id] = count;
         document.getElementById(`${id}_total`).innerHTML = price * count;
-        productCost((price * diferencia) , currency)
+        productCost((price * diferencia), currency)
     }
     totalCost()
-    
+
 }
 
 
@@ -233,73 +225,69 @@ document.addEventListener("DOMContentLoaded", ()=>{
    
 
     document.getElementById('premiumShip').addEventListener('change', ()=>{
-        commision(15)
+        commision(15);
         totalCost();
     })
     document.getElementById('expressShip').addEventListener('change', ()=>{
-        commision(7)
+        commision(7);
         totalCost();
     })
     document.getElementById('standardShip').addEventListener('change', ()=>{
-        commision(5)
+        commision(5);
         totalCost();
     })
 
-    
-    document.getElementById('creditCard').addEventListener('change', ()=>{
+
+    document.getElementById('creditCard').addEventListener('change', () => {
         document.getElementById('divpay').innerHTML = 'Tarjeta de credito';
     })
-    document.getElementById('bankTransfer').addEventListener('change', ()=>{
+    document.getElementById('bankTransfer').addEventListener('change', () => {
         document.getElementById('divpay').innerHTML = 'Transferencia bancaria';
     })
-   
-    
+
+
 });
 
 function deleteCartID(i) {
-       let cart = JSON.parse(localStorage.getItem('cart'));
+    let cart = JSON.parse(localStorage.getItem('cart'));
     if (i >= 0 && i < cart.length) {
         cart.splice(i, 1)
-        localStorage.setItem('cart',JSON.stringify(cart));
-        window.location='cart.html';
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location = 'cart.html';
     }
 }
 
-
-
-
-
-function sumar(id, price, currency){
+function sumar(id, price, currency) {
     let contador = parseInt(document.getElementById(`${id}`).value);
-   contador +=1;
-   if (contador < 1) {
-       contador = 1;
-   }
-   document.getElementById(`${id}`).value = contador;
-   calcSubtotal(id, price);
-   productCost(price, currency);
-   totalCost();
-   contadorAntiguo[id] = contador;
-   
+    contador += 1;
+    if (contador < 1) {
+        contador = 1;
+    }
+    document.getElementById(`${id}`).value = contador;
+    calcSubtotal(id, price);
+    productCost(price, currency);
+    totalCost();
+    contadorAntiguo[id] = contador;
+
 }
 
-function restar(id, price, currency){
-   let contador = parseInt(document.getElementById(`${id}`).value);
-   contador -=1;
-   if (contador >= 1){
-   document.getElementById(`${id}`).value = contador;
-   calcSubtotal(id, price);
-   productCost(-price, currency);
-   totalCost();
-   contadorAntiguo[id] = contador;
-}}
+function restar(id, price, currency) {
+    let contador = parseInt(document.getElementById(`${id}`).value);
+    contador -= 1;
+    if (contador >= 1) {
+        document.getElementById(`${id}`).value = contador;
+        calcSubtotal(id, price);
+        productCost(-price, currency);
+        totalCost();
+        contadorAntiguo[id] = contador;
+    }
+}
 
+function calcSubtotal(id, price) {
+    let contador = parseInt(document.getElementById(`${id}`).value);
+    if (contador > 0) {
+        let subtotal = contador * price;
+        document.getElementById(`${id}_total`).innerHTML = subtotal;
 
-function calcSubtotal(id, price){
-   let contador = parseInt(document.getElementById(`${id}`).value);
-   if (contador > 0){
-   let subtotal = contador * price;
-   document.getElementById(`${id}_total`).innerHTML = subtotal;
-   
-  }             
+    }
 }
