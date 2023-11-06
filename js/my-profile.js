@@ -1,11 +1,4 @@
 
-
-        
-        
-        
-        
-        
-        
         
         function fillInput(){
             const emailSession = sessionStorage.getItem("email");
@@ -30,7 +23,7 @@
 function fillInputImg(){
         let URL = localStorage.getItem('imgProfile');
         if ((URL == "") || (URL == null)) {
-             document.getElementById('imgProfile').innerHTML = `<img src="/img/img_perfil.png" alt="" id="img"></img>`;
+             document.getElementById('imgProfile').innerHTML = `<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" id="img"></img>`;
         } else{ 
            let img = new Image();
            img.src = URL;
