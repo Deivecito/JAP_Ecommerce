@@ -1,4 +1,5 @@
 
+
         
         
         
@@ -7,12 +8,21 @@
         
         
         function fillInput(){
-    document.getElementById('email').value = localStorage.getItem('email');
+            const emailSession = sessionStorage.getItem("email");
+        const emailLocal = localStorage.getItem("email");
+
+        if (emailSession){
+            document.getElementById('email').value = emailSession;
+        } else {
+            document.getElementById('email').value = emailLocal;
+        }
     document.getElementById('firstName').value = localStorage.getItem('firstName');
     document.getElementById('secondName').value = localStorage.getItem('secondName');
     document.getElementById('firstLastName').value = localStorage.getItem('firstLastName');
     document.getElementById('secondLastName').value = localStorage.getItem('secondLastName');
     document.getElementById('tel').value = localStorage.getItem('tel');
+
+
 
     fillInputImg()
 }
@@ -101,3 +111,5 @@ function setLocalStorage(){
 
            })
         })
+
+
