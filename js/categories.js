@@ -7,6 +7,7 @@ let minCount = undefined;
 let maxCount = undefined;
 
 function sortCategories(criteria, array){
+    //Función que ordena las categorias de productos
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -36,13 +37,16 @@ function sortCategories(criteria, array){
 }
 
 function setCatID(id) {
+    //Función que guarda en el localstorage el id de la categoria y redirije a products.html
+    //mostrando los productos de ducha categoria
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
 
 function showCategoriesList(){
-
+    //Función que muestra la lista de categorias
     let htmlContentToAppend = "";
+
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
 
@@ -72,6 +76,7 @@ function showCategoriesList(){
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
+    //Función que ordena y muestra las categorias segun el orden
     currentSortCriteria = sortCriteria;
 
     if(categoriesArray != undefined){
@@ -84,10 +89,10 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     showCategoriesList();
 }
 
+document.addEventListener("DOMContentLoaded", function(e){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
@@ -98,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
-        alert('asd')
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
@@ -119,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    function minYmax() {
+        //Función para obtener el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
@@ -140,5 +144,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
         showCategoriesList();
-    });
+    };
+
+    document.getElementById("rangeFilterCount").addEventListener("click", minYmax);
 });

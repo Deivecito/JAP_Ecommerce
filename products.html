@@ -32,21 +32,29 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>  
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li>
-                <a class="dropdown-item" href="cart.html" id="irCarrito">Mi Carrito</a>
+                <a class="dropdown-item" href="cart.html" id="irCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-cart" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg> Mi Carrito</a>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <a class="dropdown-item" href="my-profile.html" id="irPerfil">Mi perfil</a>
+                <a class="dropdown-item" href="my-profile.html" id="irPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg> Mi perfil</a>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <a class="dropdown-item" href="#" id="logout">Cerrar Sesión
-                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <a class="dropdown-item" href="#" id="logout">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;" width="25" height="25" fill="red" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                  </svg> 
+                  </svg> Cerrar Sesión 
                 </a>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <a class "dropdown-item" href="#" id="cambioFondo">Day-Night</a>
+                <a class="dropdown-item" href="#" id="cambioFondo">Day-Night</a> 
               </li>
             </ul>
           </li>
@@ -55,45 +63,57 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="text-center mt-5">
-      <h2>Productos</h2>
-      <p class="lead">Verás aquí todas las categorías de autos.</p>
-    </div>
-  </div>
+  <main class="pb-5 container">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 offset-lg-0 col-md-12 mb-1">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <input class="form-control mb-2" type="search" placeholder="Search" aria-label="Search" id="search_product">
+    <div class="container">
+      <div class="text-center mt-5">
+        <h2>Productos</h2>
+        <p class="lead">Verás aquí todas las categorías de autos.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <input type="radio" class="btn-check" name="options" id="sortAsc">
+            <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1">$</i></label>
+            <input type="radio" class="btn-check" name="options" id="sortDesc">
+            <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1">$</i></label>
+            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
-          <div class="col-md-6 col-lg-4">
-            <button class="btn btn-outline-success mb-2" type="submit" id="search-button">Search</button>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <p class="font-weight-normal my-2">Precio</p>
-          </div>
-          <div class="col-md-6 col-lg-1">
-            <input class="form-control mb-2" type="number" placeholder="min." id="rangeFilterCountMin">
-          </div>
-          <div class="col-md-6 col-lg-1">
-            <input class="form-control mb-2" type="number" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-          <div class="col-6 col-lg-2 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 offset-lg-0 col-md-12 mb-1">
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <input class="form-control mb-2" type="search" placeholder="Search" aria-label="Search" id="search_product">
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <button class="btn btn-outline-success mb-2" type="submit" id="search-button">Search</button>
+            </div>
+            <div class="col-md-6 col-lg-2">
+              <p class="font-weight-normal my-2">Precio</p>
+            </div>
+            <div class="col-md-6 col-lg-1">
+              <input class="form-control mb-2" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col-md-6 col-lg-1">
+              <input class="form-control mb-2" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-6 col-lg-2 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <main class="pb-5 container">
     <div class="container mt-5" id="product-list-container"></div>
+    
   </main>
 
   <footer class="text-muted">
@@ -103,8 +123,16 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+    <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-nologin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>No inicio sesión</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-yeslogin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Ya Inicio Sesión</strong>
+    </div>
+    <div class="alert alert-primary alert-dismissible fade" role="alert" id="alert-logout" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Sesión cerrada</strong>
+    </div>
   </footer>
-
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -113,19 +141,6 @@
       <div></div>
     </div>
   </div>
-
-  <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-nologin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
-    <strong>No has iniciado sesión</strong>
-  </div>
-
-  <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-yeslogin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
-    <strong>Ya has iniciado sesión</strong>
-  </div>
-
-  <div class="alert alert-primary alert-dismissible fade" role="alert" id="alert-logout" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
-    <strong>Sesión cerrada</strong>
-  </div>
-
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>

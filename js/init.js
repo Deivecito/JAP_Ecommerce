@@ -40,8 +40,42 @@ let getJSONData = function(url){
     });
 }
 
+function validar_login() {
+    // Función que recuerda el inicio de sesión.
+    let email = localStorage.getItem("email") || sessionStorage.getItem("email");
+    let login = sessionStorage.getItem("login");
+
+    if (login && email) {
+        document.getElementById('navbarScrollingDropdown').innerHTML = email;
+    } else if (email) {
+        document.getElementById('navbarScrollingDropdown').innerHTML = email;
+        sessionStorage.setItem("login", "true");
+        document.getElementById("alert-yeslogin").classList.add('show');
+        setTimeout(() => {
+            document.getElementById("alert-yeslogin").classList.remove('show');
+        }, 2500);
+    } else {
+        document.getElementById("alert-nologin").classList.add('show');
+        setTimeout(() => {
+            document.getElementById("alert-nologin").classList.remove('show');
+            location.href = "login.html";
+        }, 2000);
+    };
+};
+
+function logout() {
+    //Funión para cerrar sesion, muestra la alerta de que cerraste sesion y redirije al login
+    localStorage.clear();
+    sessionStorage.clear();
+    document.getElementById("alert-logout").classList.add('show');
+    setTimeout(() => {
+        document.getElementById("alert-logout").classList.remove('show');
+        location.href="login.html"
+    }, 2500);
+};
+
 function cambiarFondo() {
-    // Pauta 3 -Entrega 4
+    //Función para cambiar el fondo a modo dark 
     if (localStorage.getItem("theme") === null || localStorage.getItem("theme") === "light") {
         document.getElementsByTagName("body")[0].classList.add("dark-mode");
         localStorage.setItem("theme", "dark"); 
@@ -52,16 +86,13 @@ function cambiarFondo() {
 };
 
 document.addEventListener("DOMContentLoaded", ()=> {
-	//Pauta 1 - Entrega 2
-    if (localStorage.getItem("email") !== null) {
-      document.getElementById("navbarScrollingDropdown").innerHTML = localStorage.getItem("email");
-    };
+    validar_login();
 
     if (localStorage.getItem("theme") === "dark") {
         document.getElementsByTagName("body")[0].classList.add("dark-mode");
     };
 
-    document.getElementById("cambioFondo").addEventListener("click", ()=> {
-        cambiarFondo();
-    });
+    document.getElementById("cambioFondo").addEventListener("click", cambiarFondo);
+
+    document.getElementById("logout").addEventListener("click", logout);
 });
