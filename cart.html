@@ -21,33 +21,43 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+           <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+           <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+           <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>  
+           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>  
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li>
-                <a class="dropdown-item" href="cart.html" id="irCarrito">Mi Carrito</a>
+                <a class="dropdown-item" href="cart.html" id="irCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-cart" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg> Mi Carrito</a>
+              </li>
+              <li><hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item" href="my-profile.html" id="irPerfil">Mi perfil</a>
+                <a class="dropdown-item" href="my-profile.html" id="irPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg> Mi perfil</a>
+              </li>
+              <li><hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item" href="#" id="logout">Cerrar Sesión
-                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <a class="dropdown-item" href="#" id="logout">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;" width="25" height="25" fill="red" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                  </svg>
+                  </svg> Cerrar Sesión 
                 </a>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <a class="dropdown-item" href="#" id="cambioFondo">Day-Night</a>
+                <a class="dropdown-item" href="#" id="cambioFondo">Day-Night</a> 
               </li>
             </ul>
           </li>
@@ -55,11 +65,9 @@
       </div>
     </div>
   </nav>
+
   <main>
-
     <div class="container-fluid mb-3 mt-5">
-
-      <!-- Entrega 5 - Pauta 1 -->
       <h2 class="text-center mb-5">Carrito de compras</h1>
       <h4 class="mb-4">Artículos a comprar</h4>
       <div class="table-responsive-sm">
@@ -79,136 +87,136 @@
         </table>
       </div>
     </div>
-      <!-- Entrega 5 - Pauta 2 -->
-      <hr >
-      <div class="container mb-2">
-        <h4>Tipo de envío</h4>
-        <input type="radio" name="shipment" id="premiumShip" checked><label for="premiumShip">Premium 2 a 5 días (15%)</label><br>
-        <input type="radio" name="shipment" id="expressShip"><label for="expressShip">Express 5 a 8 días (7%)</label><br>
-        <input type="radio" name="shipment" id="standardShip"><label for="standardShip">Standard 12 a 15 días (5%)</label><br>
-      </div>
-<form action="" class="needs-validation" id="direccion" novalidate>
-      <div class="container mt-3 mb-3">
-          <h4>Dirección de envío</h4>
-          <div class="row">
-              <div class="col-md-6">
-                  <label for="street" class="form-label">Calle</label>
-                  <input type="text" id="street" class="form-control" required>
-                  <div class="invalid-feedback">
-                      Ingrese una calle
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <label for="Number" class="form-label">Número</label>
-                  <input type="number" id="Number" class="form-control" required>
-                  <div class="invalid-feedback">
-                      Ingrese un número
-                  </div>
-              </div>
-          </div>
-          <div class="mt-3">
-              <label for="streetCorner" class="form-label">Esquina</label>
-              <input type="text" id="streetCorner" class="form-control" required>
-              <div class="invalid-feedback">
-                  Ingrese una esquina
-              </div>
-          </div>
-      </div>
-      
-    
-
-   <div class="container">
-          <h4 class="mb-3 mt-5">Costos</h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Precio</h6>
-                <small class="text-muted">Unitario del producto</small>
-              </div>
-              <span class="text-muted" id="productCostText">0</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Porcentaje</h6>
-                <small class="text-muted">Según el tipo de publicación</small>
-              </div>
-              <span class="text-muted" id="comissionText">0</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total ($)</span>
-              <strong id="totalCostText">0</strong>
-            </li>
-          </ul>
-          <hr class="mb-4">
-  </div>
-<div class="container">
-   <h4 class="mb-3 mt-5">Forma de pago</h4>
-  <div class="col-sm-12"><small id="divpay">no se ha seleccionado</small>
-    
-    <button type="button" class="btn btn-link ps-0 ms-2" data-bs-toggle="modal"
-      data-bs-target="#modalTerminos" id="seleccionar">Seleccionar </button>
-      <div class="invalid-feedback">
-        Debe ingresar metodo de pago
-      </div>
-  </div>
-</div>
-<div class="container" align="center">
-<button class="btn btn-primary w-75 mt-5">Finalizar compra</button>
-</div> 
-</form>
-<form action="" class="needs-validation" id="payMethod" novalidate>
-
-<div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5">Forma de pago</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body">
-        
-          <div class="form-group"> <input type="radio" name="payMethod" id="creditCard" value="C" required> <label for="creditCard">Tarjeta de crédito</label>
-        <hr>
-      </div>
-        <div class="row d-flex">
-          <div class="form-group col">
-            <label for="credit">Numero de tarjeta</label>
-            <input type="number" class="form-control" id="credit" disabled required>
-          </div>
-          <div class="col">
-            <label for="ccv">Codigo seguridad</label>
-            <input type="number" class="form-control" id="ccv" disabled required>
-          </div>
-          <div class="form-group mt-3">
-            <label for="expired">Vencimiento (MM/AA)</label>
-            <input type="text" class="form-control" id="expired" disabled required>
-          </div></div>
-          <div class="form-group"> <input type="radio" class="mt-5" id="bankTransfer" name="payMethod" value="B" required> <label for="bankTransfer">Transferencia bancaria</label>
-            <hr> </div>
-            <div class="form-group">
-              <label for="acc">Numero de cuenta</label>
-              <input type="number" class="form-control" id="acc" disabled required>
-            </div>
-          
-          </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-        
-      </div>
-      </div>
+    <hr>
+    <div class="container mb-2">
+      <h4>Tipo de envío</h4>
+      <input type="radio" name="shipment" id="premiumShip" checked><label for="premiumShip">Premium 2 a 5 días (15%)</label><br>
+      <input type="radio" name="shipment" id="expressShip"><label for="expressShip">Express 5 a 8 días (7%)</label><br>
+      <input type="radio" name="shipment" id="standardShip"><label for="standardShip">Standard 12 a 15 días (5%)</label><br>
     </div>
-
-</form>
-  
+    <form action="" class="needs-validation" id="direccion" novalidate>
+      <div class="container mt-3 mb-3">
+        <h4>Dirección de envío</h4>
+        <div class="row">
+          <div class="col-md-6">
+              <label for="street" class="form-label">Calle</label>
+              <input type="text" id="street" class="form-control" required>
+              <div class="invalid-feedback">
+                  Ingrese una calle
+              </div>
+          </div>
+          <div class="col-md-6">
+              <label for="Number" class="form-label">Número</label>
+              <input type="number" id="Number" class="form-control" required>
+              <div class="invalid-feedback">
+                  Ingrese un número
+              </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <label for="streetCorner" class="form-label">Esquina</label>
+          <input type="text" id="streetCorner" class="form-control" required>
+          <div class="invalid-feedback">Ingrese una esquina</div>
+        </div>
+      </div>
+      <div class="container">
+        <h4 class="mb-3 mt-5">Costos</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Precio</h6>
+              <small class="text-muted">Unitario del producto</small>
+            </div>
+            <span class="text-muted" id="productCostText">0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Porcentaje</h6>
+              <small class="text-muted">Según el tipo de publicación</small>
+            </div>
+            <span class="text-muted" id="comissionText">0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total ($)</span>
+            <strong id="totalCostText">0</strong>
+          </li>
+        </ul>
+        <hr class="mb-4">
+      </div>
+      <div class="container">
+        <h4 class="mb-3 mt-5">Forma de pago</h4>
+        <div class="col-sm-12">
+          <small id="divpay">no se ha seleccionado</small>
+          <button type="button" class="btn btn-link ps-0 ms-2" data-bs-toggle="modal" data-bs-target="#modalTerminos" id="seleccionar">Seleccionar </button>
+          <div class="invalid-feedback">Debe ingresar metodo de pago</div>
+        </div>
+      </div>
+      <div class="container" align="center">
+        <button class="btn btn-primary w-75 mt-5">Finalizar compra</button>
+      </div> 
+    </form>
+    <form action="" class="needs-validation" id="payMethod" novalidate>
+      <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Forma de pago</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="radio" name="payMethod" id="creditCard" value="C" required>
+                <label for="creditCard">Tarjeta de crédito</label>
+                <hr>
+              </div>
+              <div class="row d-flex">
+                <div class="form-group col">
+                  <label for="credit">Numero de tarjeta</label>
+                  <input type="number" class="form-control" id="credit" disabled required>
+                </div>
+                <div class="col">
+                  <label for="ccv">Codigo seguridad</label>
+                  <input type="number" class="form-control" id="ccv" disabled required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="expired">Vencimiento (MM/AA)</label>
+                  <input type="text" class="form-control" id="expired" disabled required>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="radio" class="mt-5" id="bankTransfer" name="payMethod" value="B" required>
+                <label for="bankTransfer">Transferencia bancaria</label>
+                <hr>
+              </div>
+              <div class="form-group">
+                <label for="acc">Numero de cuenta</label>
+                <input type="number" class="form-control" id="acc" disabled required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </main>
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-nologin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>No inicio sesión</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-yeslogin" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Ya Inicio Sesión</strong>
+    </div>
+    <div class="alert alert-primary alert-dismissible fade" role="alert" id="alert-logout" style="position: absolute; top: 0; margin-top: 48px; border-bottom-left-radius: 15px; border-bottom-right-radius: 10px;" align="center">
+      <strong>Sesión cerrada</strong>
+    </div>
+    <div class="alert alert-success alert-dismisible fade" role="alert" id="alert-successBuy"  align="center" style="margin-top: 35px;">
+      <strong>Has comprado con éxito!</strong>
     </div>
   </footer>
   <div id="spinner-wrapper">
@@ -218,11 +226,7 @@
       <div></div>
       <div></div>
     </div>
-  </div>
-  <div class="alert alert-success alert-dismisible fade" role="alert" id="alert-successBuy"  align="center" style="margin-top: 35px;">
-    <strong>Has comprado con éxito!</strong>
-    </div>
-    
+  </div>    
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js" defer></script>

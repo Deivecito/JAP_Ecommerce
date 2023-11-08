@@ -1,7 +1,7 @@
 let cart = [];
 
 function showComments() {
-    //Pauta 3 - Entrega 3
+    //Función para mostrar los comentarios que ya estaban cargados
     fetch(`https://japceibal.github.io/emercado-api/products_comments/${localStorage.getItem("prodID")}.json`)
     .then(response => response.json())
     .then(data => {
@@ -45,6 +45,7 @@ function showComments() {
 };
 
 function score() {
+    //Función para puntuar un producto
     let stars = document.querySelectorAll('.fa-star');
     let selectedRating = 0; 
     stars.forEach((star, index) => {
@@ -68,20 +69,18 @@ function score() {
             document.getElementById('selectedRating').textContent = `${selectedRating}`;
         });
     });
-}
+};
 
 function showProductInfo() {
-    //Pauta 2 - Entrega 3
+    //Función para mostrar la informacion del producto seleccionado
     fetch(`https://japceibal.github.io/emercado-api/products/${localStorage.getItem("prodID")}.json`)
     .then(response => response.json())
     .then(data => {
         document.getElementById("container").innerHTML = `
-
-        <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between">
                 <p class="fs-2 mt-4 mb-4">${data.name}</p>
                 <button type="button" class="btn btn-success m-4" onclick="addToCart(${data.id})">Comprar</button>
             </div>
-
             <hr>
             <div class="row">
                 <p class="mb-0"><strong>Precio</strong></p>
@@ -102,38 +101,32 @@ function showProductInfo() {
             <div class="row">
                 <p class="mb-2"><strong>Imágenes Ilustrativas</strong></p>
                 <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                 <div class="carousel-indicators">
-                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="${data.images[0]}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="${data.images[1]}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="${data.images[2]}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="${data.images[3]}" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="${data.images[0]}" class="d-block w-100" alt="..."></div>
+                        <div class="carousel-item"><img src="${data.images[1]}" class="d-block w-100" alt="..."></div>
+                        <div class="carousel-item"><img src="${data.images[2]}" class="d-block w-100" alt="..."></div>
+                        <div class="carousel-item"><img src="${data.images[3]}" class="d-block w-100" alt="..."></div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         `;
-        // Entrega 4 - Pauta 1
+        
         for (let i = 0; i < data.relatedProducts.length; i++) {
+            // Recorre el arreglo donde estan los productos seleccionados y los muestra
             document.getElementById("relatedProducts").innerHTML += `
                 <div class="m-2 card cursor-active" style="width: 18rem;" onclick="setProdID(${data.relatedProducts[i].id})">
                     <img src="${data.relatedProducts[i].image}" class="card-img-top" alt="...">
@@ -150,7 +143,7 @@ function showProductInfo() {
 };
 
 function addComment(){
-    //Desafiate - Entrega 3 
+    //Función para agregar comentarios en tiempo real
     let date = new Date();
     let currentDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 
@@ -184,12 +177,10 @@ function addComment(){
 };
 
 function setProdID(id) {
-    //Pauta 1 - Entrega 3
     localStorage.setItem("prodID", id);
     window.location = "product-info.html";
 };
 
-//Entrega 5 - Desafiate
 function addToCart(id) {
     //Recuerda los elementos guardados en el almacenamiento, y actualiza la lista cart. 
     //Cada vez que se carga una pagina-info, la lista cart es vacia.
@@ -209,7 +200,6 @@ function addToCart(id) {
 document.addEventListener("DOMContentLoaded", ()=> {
     showProductInfo();
     score();
-
     showComments();
 
     document.getElementById("sendComment").addEventListener("click", ()=> {

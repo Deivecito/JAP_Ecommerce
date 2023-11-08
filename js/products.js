@@ -3,11 +3,13 @@ const ORDER_DESC_BY_COST = "LOW_TO_HIGH";
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_SOLD_COUNT = "RELEVANCE";
-let productsArray = [];
+let currentProductsArray = [];
+let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
 function sortProducts(criteria, array) {
+    //Función que ordena el arreglo de productos según el filtro
     let result = [];
 
     if (criteria === ORDER_ASC_BY_NAME) {
@@ -25,19 +27,20 @@ function sortProducts(criteria, array) {
 };
 
 function setProdID(id) {
-    //Pauta 1 - Entrega 3
+    //Funcion que guarda el id del producto seleccionado y redirije a la info de ese profucto
     localStorage.setItem("prodID", id);
     window.location = "product-info.html";
 };
 
 function showProductsList() {
+    //Función que muestra la lista de productos
     let htmlContentToAppend = "";
 
-    for (let i = 0; i < productsArray.length; i++) {
-        let product = productsArray[i];
+    for (let i = 0; i < currentProductsArray.length; i++) {
+        let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) && ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
-                htmlContentToAppend += `
+            htmlContentToAppend += `
                 <div class="row cursor-active" onclick="setProdID(${product.id})">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -56,43 +59,57 @@ function showProductsList() {
     };
 };
 
-function sortAndShowProducts(sortCriteria, categoriesArray){
-    if (categoriesArray != undefined) {
-        productsArray = categoriesArray;
+function sortAndShowProducts(sortCriteria, productsArray){
+    //Función que ordena y muestra productos ordenados
+    currentSortCriteria = sortCriteria;
+
+    if (productsArray != undefined) {
+        currentProductsArray = productsArray;
     };
     
-    productsArray = sortProducts(sortCriteria, productsArray);
+    currentProductsArray = sortProducts(sortCriteria, currentProductsArray);
     
     showProductsList();
 };  
            
-document.addEventListener('DOMContentLoaded', function() {
-    validar_login();
-    resetear();
+function searchProducts(){
+    //Función que busca y filtra productos en tiempo real, segun el texto agregado
+    let busqueda = document.getElementById('search_product').value;
+    currentProductsArray = currentProductsArray.filter(item => item.name.toLowerCase().includes(busqueda.toLowerCase()));
+                
+    if (busqueda !== "") {
+        showProductsList();
+    } else {
+        getJSONData(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`).then(function(resultObj){
+            if (resultObj.status === "ok"){
+                currentProductsArray = resultObj.data.products
+                showProductsList()
+            }
+        });
+    };
+};
 
-    document.getElementById('search_product').addEventListener('input', function() {
-        let busqueda = document.getElementById('search_product').value;
-        productsArray = productsArray.filter(item => item.name.toLowerCase().includes(busqueda.toLowerCase()));
-                    
-        if (busqueda !== "") {
-            showProductsList();
-        } else {
-            resetear();
+document.addEventListener('DOMContentLoaded', function() {
+    getJSONData(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            currentProductsArray = resultObj.data.products
+            showProductsList()
         }
     });
 
-    function resetear() {
-        //Pauta 2 - Entrega 2
-        fetch(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`)
-            .then(response => response.json())
-            .then(data => {
-                productsArray = data.products;
-                showProductsList();
-            })
-            .catch(error => {
-                console.error("Error al cargar los productos:", error);
-            });
-    };
+    document.getElementById('search_product').addEventListener('input', searchProducts);
+
+    document.getElementById("sortAsc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_ASC_BY_COST);
+    });
+
+    document.getElementById("sortDesc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_DESC_BY_COST);
+    });
+
+    document.getElementById("sortByCount").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_BY_SOLD_COUNT);
+    });
         
     document.getElementById("clearRangeFilter").addEventListener("click", function() {
         document.getElementById("rangeFilterCountMin").value = "";
@@ -123,33 +140,4 @@ document.addEventListener('DOMContentLoaded', function() {
         showProductsList();
     });
        
-    document.getElementById("logout").addEventListener("click", function() {
-        localStorage.clear();
-        sessionStorage.clear();
-        document.getElementById("alert-logout").classList.add('show');
-        setTimeout(() => {
-            document.getElementById("alert-logout").classList.remove('show');
-            location.href="login.html"
-        }, 2500);
-    });
-
-    function validar_login() {
-        if ((localStorage.getItem("email") === null) && (sessionStorage.getItem("email") === null)) {
-            document.getElementById("alert-nologin").classList.add('show');
-            setTimeout(() => {
-                document.getElementById("alert-nologin").classList.remove('show');
-                location.href="login.html"
-            }, 2000);
-        } if ((localStorage.getItem("email") === null) && (sessionStorage.getItem("email") !== null)) {
-            document.getElementById("alert-yeslogin").classList.add('show');
-            setTimeout(() => {
-                document.getElementById("alert-yeslogin").classList.remove('show');
-            }, 2500);
-        } if ((localStorage.getItem("email") !== null) && (sessionStorage.getItem("email") === null)) {
-            document.getElementById("alert-yeslogin").classList.add('show');
-            setTimeout(() => {
-                document.getElementById("alert-yeslogin").classList.remove('show');
-            }, 2500);
-        };
-    };
 });
